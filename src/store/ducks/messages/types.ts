@@ -9,6 +9,7 @@ export interface MessageData {
     senderId: number
     senderName: string
     text: string
+    timestamp: number
 }
 
 export interface MessagesState {

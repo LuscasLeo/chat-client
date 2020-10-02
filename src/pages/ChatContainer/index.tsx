@@ -15,7 +15,8 @@ const ChatContainer: React.FC = () => {
 		dispatch(sendMessage({
 			senderId: 1,
 			senderName: 'Lucas',
-			text: message
+			text: message,
+			timestamp: Date.now(),
 		}));
 	};
 

@@ -11,7 +11,8 @@ const loaded_state_data: MessageData[] = [
 	{
 		senderId: 1,
 		senderName: 'LUCAS',
-		text: 'Hello World!'
+		text: 'Hello World!',
+		timestamp: Date.now()
 	}
 ];
 

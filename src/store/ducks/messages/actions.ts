@@ -3,4 +3,4 @@ import { MessageData, MessageTypes } from './types';
 
 export const loadRequest = (): Action => action(MessageTypes.LOAD_REQUEST);
 
-export const sendMessage = (message: string): Action => action(MessageTypes.SEND_MESSAGE, message);
+export const sendMessage = (message: MessageData): Action => action(MessageTypes.SEND_MESSAGE, message);

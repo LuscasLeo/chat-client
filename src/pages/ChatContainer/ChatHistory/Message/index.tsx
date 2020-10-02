@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { MessageData } from '../../../../store/ducks/messages/types';
-import { ProfileIcon, MessageContainer, ProfileName, MessageContent, Container } from './styles';
+import { ProfileIcon, MessageContainer, ProfileName, MessageContent, Container, Timestamp } from './styles';
 
 export interface MessageProps {
     message: MessageData;
@@ -8,19 +8,26 @@ export interface MessageProps {
 
 const Message: React.FC<MessageProps> = ({message}) => {
 	const messageRef = useRef<HTMLDivElement>(null);
+	const {senderId, senderName, text, timestamp} = message;
     
 	useEffect(() => {
-		messageRef.current && messageRef.current.scrollIntoView({behavior: 'smooth'});
+		messageRef.current && messageRef.current.scrollIntoView();
 	}, []);
 
-	const isMe = message.senderId == 1;
+	const isMe = senderId == 1;
 
-	return (
+	const formatTime= (timestamp: number) => {
+		const date = new Date(timestamp);
+		return `${date.getHours()}:${date.getMinutes()}`;
+	};
+
+	return ( 
 		<Container className={`${isMe && 'right'}`} ref={messageRef}>
 			{   !isMe && <ProfileIcon />    }
 			<MessageContainer>
-				<ProfileName>{message.senderName}</ProfileName>
-				<MessageContent>{message.text}</MessageContent>
+				<ProfileName>{senderName}</ProfileName>
+				<MessageContent>{text}</MessageContent>
+				<Timestamp>{formatTime(timestamp)}</Timestamp>
 			</MessageContainer>
 			{   isMe && <ProfileIcon />    }
 		</Container>

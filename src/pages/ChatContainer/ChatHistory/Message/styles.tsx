@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 
 export const Container = styled.div`
@@ -37,4 +37,10 @@ export const ProfileName = styled.div`
 
 export const MessageContent = styled.span`
     
+`;
+
+export const Timestamp = styled.span`
+    font-size: 1rem;
+    font-weight: bold;
+    float: right;   
 `;
